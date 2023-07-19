@@ -1,0 +1,31 @@
+<html>
+
+<body>
+    <div>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+    <a href="/task">Добавить задачу</a>
+    <div>Здесь вы можете предложить свою задачу</div>
+    <div>После выполнения, ее статус изменится на true</div>
+    <div>Не забудьте оставить номер телефона для связи</div>
+
+    <div><u>Выполняемые задачи</u></div>
+    {{#tasks}}
+        <div>
+            <strong>{{name}}</strong>
+            <div></div>
+            <i>Oписание: {{description}}</i>
+            <div></div>
+            <span>Tелефон заказчика: {{phoneNumber}}</span>
+            <div></div>
+            <span>Цена: {{price}}</span>
+            <div></div>
+            <i>Статус выполнения: {{status}}</i>
+        </div>
+    {{/tasks}}
+
+</body>
+</html>

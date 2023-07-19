@@ -1,0 +1,41 @@
+<html>
+
+<body>
+
+<div><u>Список задач</u></div>
+{{#tasks}}
+    <div>
+        <span>id: {{id}}</span>
+        <div></div>
+        <strong>Название: {{name}}</strong>
+        <div></div>
+        <i>Oписание: {{description}}</i>
+        <div></div>
+        <span>Tелефон заказчика: {{phoneNumber}}</span>
+        <div></div>
+        <span>Цена: {{price}}</span>
+        <div></div>
+        <i>Статус выполнения: {{status}}</i>
+    </div>
+{{/tasks}}
+<div><u>Поиск</u></div>
+<form method="get" action="task">
+    <input type="text" name="filter">
+    <button type="submit">Найти</button>
+</form>
+<div><u>Удалить задачу</u></div>
+<form method="post" action="deleteTask">
+    <input type="number" name="id" placeholder="Введите id задачи" />
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <button type="submit">Удалить</button>
+</form>
+<div><u>Изменить статус задачи, отметить выполненной</u></div>
+<form method="post" action="taskSolution">
+    <input type="number" name="id" placeholder="Введите id задачи" />
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <button type="submit">Выполнить</button>
+</form>
+
+<a href="/mainAdmin">Назад</a>
+</body>
+</html>

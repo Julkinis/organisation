@@ -1,0 +1,63 @@
+<html>
+
+<body>
+    <div>Создать департамент</div>
+    <div>
+        <form method="post">
+            <input type="text" name="name" placeholder="Введите название департамента" />
+            <input type="text" name="rooms" placeholder="Комнаты">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+    <div><u>Список департаментов:</u></div>
+    <form method="get" action="department">
+        <input type="text" name="filter">
+        <button type="submit">Найти</button>
+    </form>
+    {{#departments}}
+        <div>
+            <span> id департамента: {{id}} </span>
+            <div></div>
+            <strong> Название: {{name}} </strong>
+            <div></div>
+            <i> Количество сотрудников: {{countStaff}} </i>
+            <div></div>
+            <i> Комнаты: {{rooms}} </i>
+        </div>
+    {{/departments}}
+    <div> </div>
+    <div><u>Добавить начальника департамента</u></div>
+    <form method="get" action="department">
+        <input type="number" name="dep" placeholder="Введите id департамента" />
+        <input type="number" name="staff" placeholder="Введите id начальника">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Добавить</button>
+    </form>
+
+    <div><u>Список сотрудников:</u></div>
+    {{#staff}}
+        <div>
+            <span> id сотрудника: {{id}} </span>
+            <div> </div>
+            <strong> ФИО: {{FCs}} </strong>
+            <div> </div>
+            <i> Адрес: {{address}} </i>
+            <div> </div>
+            <span> Должность: {{post}} </span>
+            <div> </div>
+            <span> Дата рождения: {{birthDate}} </span>
+            <div> </div>
+            <span> Департамент: {{department.name}} </span>
+        </div>
+    {{/staff}}
+    <div> </div>
+    <div>Удалить департамент</div>
+    <form method="post" action="deleteDepartment">
+        <input type="text" name="name" placeholder="Введите название департамента" />
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Удалить</button>
+    </form>
+    <a href="/mainAdmin">Назад</a>
+</body>
+</html>

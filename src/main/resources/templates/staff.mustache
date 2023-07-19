@@ -1,0 +1,56 @@
+<html>
+
+<body>
+
+    <div>Добавить сотрудника</div>
+    <div>
+        <form method="post">
+            <input type="text" name="FCs" placeholder="ФИО" />
+            <input type="text" name="address" placeholder="адрес">
+            <input type="text" name="post" placeholder="должность">
+            <input type="text" name="birthDate" placeholder="дата рождения">
+            <input type="number" name="depId" placeholder="департамент">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+    <div><u>Список департаментов:</u></div>
+    {{#departments}}
+        <div>
+            <span> id департамента: {{id}} </span>
+            <div></div>
+            <strong> Название: {{name}} </strong>
+            <div></div>
+            <i> Количество сотрудников: {{countStaff}} </i>
+            <div></div>
+            <i> Комнаты: {{rooms}} </i>
+        </div>
+    {{/departments}}
+    <div> </div>
+    <div> </div>
+    <div><u>Список сотрудников:</u></div>
+    {{#staff}}
+        <div>
+            <span> id сотрудника: {{id}} </span>
+            <div> </div>
+            <strong> ФИО: {{FCs}} </strong>
+            <div> </div>
+            <i> Адрес: {{address}} </i>
+            <div> </div>
+            <span> Должность: {{post}} </span>
+            <div> </div>
+            <span> Дата рождения: {{birthDate}} </span>
+            <div> </div>
+            <span> Департамент: {{department.name}} </span>
+        </div>
+    {{/staff}}
+    <div> </div>
+    <div><u>Удалить сотрудника</u></div>
+    <form method="post" action="deleteStaff">
+        <input type="number" name="id" placeholder="Введите id сотрудника" />
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Удалить</button>
+    </form>
+    <a href="/mainAdmin">Назад</a>
+</body>
+</html>

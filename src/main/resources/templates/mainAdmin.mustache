@@ -1,0 +1,20 @@
+<html>
+<body>
+
+    <div>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+
+    <a href="/staff">Работа с сотрудниками</a>
+    <div></div>
+    <a href="/department">Редактор департаментов</a>
+    <div></div>
+    <a href="/organisation">Редактор организаций</a>
+    <div></div>
+    <a href="/taskAdmin">Редактор задач</a>
+
+</body>
+</html>
