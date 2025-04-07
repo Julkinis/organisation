@@ -1,0 +1,63 @@
+<html>
+
+<body>
+    <div>Создать организацию</div>
+    <div>
+        <form method="post">
+            <input type="text" name="name" placeholder="Введите название организации" />
+            <input type="text" name="description" placeholder="Описание организации" />
+            <input type="text" name="address" placeholder="Адрес">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+    <div>Список организаций:</div>
+    <form method="get" action="organisation">
+        <input type="text" name="filter">
+        <button type="submit">Найти</button>
+    </form>
+    {{#organisations}}
+        <div>
+            <strong> id организации: {{id}} </strong>
+            <span> название: {{name}} </span>
+            <span> описание: {{description}} </span>
+            <i> адрес: {{address}} </i>
+        </div>
+    {{/organisations}}
+    <div></div>
+    <div>Добавить начальника организации</div>
+    <form method="get" action="organisation">
+        <input type="number" name="orgId" placeholder="Введите id организации" />
+        <input type="number" name="staffId" placeholder="Введите id начальника">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Добавить</button>
+    </form>
+
+    <div>Список сотрудников:</div>
+    {{#staff}}
+        <div>
+            <span> id сотрудника: {{id}} </span>
+            <div> </div>
+            <strong> ФИО: {{FCs}} </strong>
+            <div> </div>
+            <i> Адрес: {{address}} </i>
+            <div> </div>
+            <span> Должность: {{post}} </span>
+            <div> </div>
+            <span> Дата рождения: {{birthDate}} </span>
+            <div> </div>
+            <span> Департамент: {{department.name}} </span>
+        </div>
+    {{/staff}}
+
+    <div>Удалить организацию</div>
+    <form method="post" action="deleteOrganisation">
+        <input type="text" name="name" placeholder="Введите название организации" />
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Удалить</button>
+    </form>
+
+    <a href="/mainAdmin">Назад</a>
+</body>
+
+</html>
